@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * {@code FrankfurterCurrencyLoader} is an implementation of the {@link CurrencyLoader} interface.
  * This class is responsible for loading a list of {@link Currency} objects by fetching
- * currency data from the Frankfurter API (https://api.frankfurter.dev/v1/currencies).
+ * currency data from the Frankfurter API.
  *
  * <p>The {@link #load()} method sends a request to the Frankfurter API, retrieves a JSON
  * response containing currency symbols, and converts it into a list of {@link Currency} objects.
