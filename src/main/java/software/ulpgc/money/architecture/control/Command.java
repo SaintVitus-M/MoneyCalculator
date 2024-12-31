@@ -8,9 +8,9 @@ package software.ulpgc.money.architecture.control;
  *     This functional interface is designed to execute a specific action without exposing the implementation details.
  * </p>
  *
- * @author Vít Mikula
- * @version %I%, %G%
- * @since  1.0
+ * @author      Vít Mikula
+ * @version     1.0, 31/12/2024
+ * @since       1.0
  */
 @FunctionalInterface
 public interface Command {

@@ -16,7 +16,7 @@ import software.ulpgc.money.architecture.view.ContentDisplay;
  * or details about the application.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class ShowReadMeCommand implements Command {

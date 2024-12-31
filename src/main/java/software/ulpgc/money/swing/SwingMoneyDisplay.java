@@ -35,7 +35,7 @@ import java.time.LocalTime;
  * Ensure that all calls to its methods are performed on the EDT to avoid concurrency issues.</p>
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class SwingMoneyDisplay extends JPanel implements MoneyDisplay {

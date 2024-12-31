@@ -27,7 +27,7 @@ import java.util.Map;
  * name or value.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class FrankfurterCurrencyLoader implements CurrencyLoader {

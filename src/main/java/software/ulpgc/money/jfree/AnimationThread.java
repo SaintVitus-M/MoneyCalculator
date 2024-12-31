@@ -18,7 +18,7 @@ import java.util.TreeMap;
  *  thread lifecycle and chart rendering.</p>
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class AnimationThread extends Thread {

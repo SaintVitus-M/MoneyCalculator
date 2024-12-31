@@ -35,7 +35,7 @@ import java.util.Map;
  * <p>The constructor initializes the main frame, sets its layout, and adds the various panels.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class SwingMainFrame extends JFrame {

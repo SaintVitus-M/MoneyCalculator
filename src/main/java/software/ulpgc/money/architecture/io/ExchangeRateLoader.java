@@ -13,7 +13,7 @@ import software.ulpgc.money.architecture.model.ExchangeRate;
  * the exchange rate between them.</p>
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public interface ExchangeRateLoader {

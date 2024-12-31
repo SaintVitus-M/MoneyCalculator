@@ -19,7 +19,7 @@ import java.net.URL;
  * such as non-200 HTTP status codes.</p>
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class APIDeserializer {

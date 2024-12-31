@@ -7,7 +7,7 @@ import software.ulpgc.money.architecture.model.TimeSeriesChart;
  * Loads an exchange rates {@code TimeSeriesChart} from selected currencies.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class TimeSeriesChartLoader implements ChartLoader {

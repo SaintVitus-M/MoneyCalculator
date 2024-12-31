@@ -15,7 +15,7 @@ import java.util.List;
  * display, or analysis.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public interface CurrencyLoader {

@@ -16,7 +16,7 @@ import java.awt.*;
  * JFreeChart, allowing the conversion of domain-specific chart objects to the JFreeChart framework.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class JFreeChartAdapter {

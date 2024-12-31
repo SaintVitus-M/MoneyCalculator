@@ -29,9 +29,9 @@ import javax.swing.*;
  * <p>This class relies on external APIs to fetch real-time and historical
  * exchange rates. The histogram is rendered using an integrated charting library.
  *
- * @author Vít Mikula
- * @version %I%, %G%
- * @since 1.0
+ * @author      Vít Mikula
+ * @version     1.0, 31/12/2024
+ * @since       1.0
  */
 public class ExchangeMoneyCommand implements Command {
     private final MoneyDialog moneyDialog;

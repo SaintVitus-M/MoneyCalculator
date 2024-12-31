@@ -20,7 +20,7 @@ import java.io.IOException;
  * In case of failure (e.g., network error or malformed response), the method returns {@code null}.
  *
  * @author      Vít Mikula
- * @version     %I%, %G%
+ * @version     1.0, 31/12/2024
  * @since       1.0
  */
 public class FrankfurterExchangeRateLoader implements ExchangeRateLoader {
