@@ -66,10 +66,21 @@ public class SwingMainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setIconImage(createIconImage());
         add(createToolPane(), BorderLayout.NORTH);
         add(createGraphPane(), BorderLayout.CENTER);
         add(createMoneyDisplayPane(), BorderLayout.EAST);
         add(createBottomPane(), BorderLayout.SOUTH);
+    }
+
+    /**
+     * Creates the image for the App's main icon.
+     *
+     * @return A {@code Image} from the main icon.
+     */
+    private Image createIconImage() {
+        ImageIcon mainIcon = new ImageIcon("src/main/resources/main.png");
+        return mainIcon.getImage();
     }
 
 
