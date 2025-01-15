@@ -34,8 +34,8 @@ import java.util.List;
  * @see Currency
  * @see FrankfurterCurrencyLoader
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
- * @since       1.0
+ * @version     1.0.1, 15/01/2025
+ * @since       1.0.1
  */
 public class App {
     public static void main() {

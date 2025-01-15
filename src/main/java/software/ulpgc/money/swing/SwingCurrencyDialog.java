@@ -26,7 +26,7 @@ import java.util.List;
  * </ul>
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public class SwingCurrencyDialog extends JPanel implements software.ulpgc.money.architecture.view.CurrencyDialog {

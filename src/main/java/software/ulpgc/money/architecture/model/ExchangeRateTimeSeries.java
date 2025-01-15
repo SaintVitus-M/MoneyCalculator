@@ -13,7 +13,7 @@ import java.util.Map;
  * @param rates {@code Map} Sequence of exchange rate values.
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public record ExchangeRateTimeSeries(Currency from, Currency to, Map<String, Double> rates) {

@@ -9,7 +9,7 @@ package software.ulpgc.money.architecture.model;
  * @param yAxisLabel Label for Y axis.
  *
  * @author      Vit Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public record TimeSeriesChart(String title, String xAxisLabel, String yAxisLabel) {

@@ -24,7 +24,7 @@ import java.awt.*;
  * a larger Swing-based user interface, where it manages content updates in response to user actions.
  *
  * @author      Vit Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public class CenterContentDisplay extends JPanel implements ContentDisplay {

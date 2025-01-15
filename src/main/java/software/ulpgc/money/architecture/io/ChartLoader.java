@@ -17,7 +17,7 @@ import software.ulpgc.money.architecture.model.TimeSeriesChart;
  * that displays the exchange rate from one currency to another over time.
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public interface ChartLoader {

@@ -9,7 +9,7 @@ package software.ulpgc.money.architecture.model;
  * @param rate Value of the exchange rate.
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public record ExchangeRate(Currency from, Currency to, String date, double rate) {

@@ -13,7 +13,7 @@ import software.ulpgc.money.architecture.model.TimeSeriesChart;
  * (such as charts) and additional informational content (such as textual details) are required.
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
+ * @version     1.0.1, 15/01/2025
  * @since       1.0
  */
 public interface ContentDisplay {
