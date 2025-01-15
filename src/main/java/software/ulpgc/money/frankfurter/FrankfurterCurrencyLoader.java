@@ -3,13 +3,11 @@ package software.ulpgc.money.frankfurter;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import software.ulpgc.money.architecture.io.APIService;
 import software.ulpgc.money.architecture.model.Currency;
 import software.ulpgc.money.architecture.io.CurrencyLoader;
-import software.ulpgc.money.architecture.io.APIDeserializer;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +29,11 @@ import java.util.Map;
  * @since       1.0
  */
 public class FrankfurterCurrencyLoader implements CurrencyLoader {
+    private final APIService apiDeserializer;
+
+    public FrankfurterCurrencyLoader(APIService apiDeserializer) {
+        this.apiDeserializer = apiDeserializer;
+    }
 
     /**
      * Loads the list of currencies from the Frankfurter API.
@@ -45,11 +48,7 @@ public class FrankfurterCurrencyLoader implements CurrencyLoader {
     @Override
     public List<Currency> load() {
         String url = "https://api.frankfurter.dev/v1/currencies";
-        try {
-            return toList(APIDeserializer.loadJsonWith(url));
-        } catch (IOException e) {
-            return Collections.emptyList();
-        }
+        return toList(apiDeserializer.loadJsonWith(url));
     }
 
     /**

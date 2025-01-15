@@ -3,10 +3,10 @@ package software.ulpgc.money.frankfurter;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import software.ulpgc.money.architecture.io.APIService;
 import software.ulpgc.money.architecture.io.StatisticLoader;
 import software.ulpgc.money.architecture.model.Currency;
 import software.ulpgc.money.architecture.model.ExchangeRateTimeSeries;
-import software.ulpgc.money.architecture.io.APIDeserializer;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -32,9 +32,10 @@ import java.util.Map;
  * @since       1.0
  */
 public class FrankfurterTimeSeriesLoader implements StatisticLoader {
+    private final APIService apiDeserializer;
 
-    /**Constructs a new {@code FrankfurterTimeSeriesLoader} instance.*/
-    public FrankfurterTimeSeriesLoader() {
+    public FrankfurterTimeSeriesLoader(APIService apiDeserializer) {
+        this.apiDeserializer = apiDeserializer;
     }
 
     /**
@@ -45,18 +46,13 @@ public class FrankfurterTimeSeriesLoader implements StatisticLoader {
      * @param to The target currency to which the base currency is converted.
      * @return An {@link ExchangeRateTimeSeries} containing the exchange rates for each day
      *         in the past year.
-     * @throws RuntimeException If an error occurs while fetching or parsing the data from the API.
      * @since       1.0
      */
     @Override
     public ExchangeRateTimeSeries loadStatistic(Currency from, Currency to) {
         String startDay = LocalDate.ofYearDay(LocalDate.now().getYear() - 1, LocalDate.now().getDayOfMonth()).toString();
         String url = "https://api.frankfurter.dev/v1/" + startDay + "..?symbols=" + to.code() + "&base=" + from.code();
-        try {
-            return toTimeSeries(from, to, APIDeserializer.loadJsonWith(url));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return toTimeSeries(from, to, apiDeserializer.loadJsonWith(url));
     }
 
     /**

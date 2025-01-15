@@ -2,12 +2,10 @@ package software.ulpgc.money.frankfurter;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import software.ulpgc.money.architecture.io.APIService;
 import software.ulpgc.money.architecture.io.ExchangeRateLoader;
 import software.ulpgc.money.architecture.model.Currency;
 import software.ulpgc.money.architecture.model.ExchangeRate;
-import software.ulpgc.money.architecture.io.APIDeserializer;
-
-import java.io.IOException;
 
 /**
  * {@code FrankfurterExchangeRateLoader} is an implementation of the {@link ExchangeRateLoader} interface
@@ -24,6 +22,11 @@ import java.io.IOException;
  * @since       1.0
  */
 public class FrankfurterExchangeRateLoader implements ExchangeRateLoader {
+    private final APIService apiDeserializer;
+
+    public FrankfurterExchangeRateLoader(APIService apiDeserializer) {
+        this.apiDeserializer = apiDeserializer;
+    }
 
     /**
      * Loads the latest exchange rate between the given currencies using the Frankfurter API.
@@ -37,11 +40,7 @@ public class FrankfurterExchangeRateLoader implements ExchangeRateLoader {
     @Override
     public ExchangeRate load(Currency from, Currency to) {
         String url = "https://api.frankfurter.dev/v1/latest?symbols=" + to.code() + "&base=" + from.code();
-        try {
-            return toExchangeRate(from, to, APIDeserializer.loadJsonWith(url));
-        } catch (IOException e) {
-            return null;
-        }
+        return toExchangeRate(from, to, apiDeserializer.loadJsonWith(url));
     }
 
     /**
