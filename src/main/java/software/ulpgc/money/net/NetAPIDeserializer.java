@@ -1,6 +1,6 @@
-package software.ulpgc.money.architecture.io;
+package software.ulpgc.money.net;
 
-import org.jetbrains.annotations.NotNull;
+import software.ulpgc.money.architecture.io.APIService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,33 +11,30 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * The {@code APIDeserializer} class provides functionality to load and deserialize JSON data
- * from a remote API endpoint via HTTP GET requests. It offers a method to fetch the raw JSON
- * response from a given URL and returns it as a {@link String}.
+ * A utility class that implements the {@link APIService} interface to fetch and deserialize JSON data from a given URL.
+ * This class uses the {@link HttpURLConnection} to establish an HTTP connection and retrieve JSON responses.
  *
- * <p>The class handles HTTP connections and manages errors related to network responses,
- * such as non-200 HTTP status codes.</p>
+ * <p>The primary method, {@code loadJsonWith(String url)}, accepts a URL as input and returns the JSON response as a string.
+ * If the request fails or encounters an error, it throws a {@link RuntimeException}.
+ *
+ * <p>Note: This class handles GET requests only and expects the response to be in JSON format.
+ * It throws a {@link RuntimeException} if the HTTP response code is not 200 or if an exception occurs during processing.
  *
  * @author      Vít Mikula
- * @version     1.0, 31/12/2024
- * @since       1.0
+ * @version     1.0.1, 15/01/2025
+ * @since       1.0.1
  */
-public class APIDeserializer {
+public class NetAPIDeserializer implements APIService {
 
     /**
-     * Loads JSON data from the specified URL by making an HTTP GET request.
+     * Fetches the JSON response from the given URL and returns it as a string.
      *
-     * <p>This method opens a connection to the given URL, sends a GET request, and returns
-     * the JSON response as a {@link String}. If an error occurs during the connection or
-     * data retrieval process, an exception is thrown.</p>
-     *
-     * @param url The URL of the API endpoint to retrieve the JSON data from.
-     * @return A {@link String} containing the JSON response from the API.
-     * @throws IOException If an I/O error occurs while reading the response.
-     * @throws RuntimeException If the HTTP response code is not 200 (OK), or if other errors occur.
-     * @since       1.0
+     * @param url the URL to fetch the JSON from.
+     * @return a string containing the JSON response from the provided URL.
+     * @throws RuntimeException if an exception occurs during the connection or if the response code is not 200.
      */
-    public static String loadJsonWith(String url) throws IOException {
+    @Override
+    public String loadJsonWith(String url) {
         try {
             BufferedReader reader = getBufferedReader(url);
             StringBuilder jsonResponse = new StringBuilder();
@@ -66,7 +63,7 @@ public class APIDeserializer {
      * @throws RuntimeException If the HTTP response code is not 200 (OK).
      * @since       1.0
      */
-    private static @NotNull BufferedReader getBufferedReader(String url) throws URISyntaxException, IOException {
+    private static BufferedReader getBufferedReader(String url) throws URISyntaxException, IOException {
         URI uri = new URI(url);
         URL u = uri.toURL();
         HttpURLConnection connection = (HttpURLConnection) u.openConnection();
@@ -77,7 +74,6 @@ public class APIDeserializer {
         if(response != 200){
             throw new RuntimeException("Error: HTTP " + response);
         }
-
         return new BufferedReader(new InputStreamReader(connection.getInputStream()));
     }
 }
