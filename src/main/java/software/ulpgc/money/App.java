@@ -1,14 +1,16 @@
 package software.ulpgc.money;
 
-import org.jetbrains.annotations.NotNull;
 import software.ulpgc.money.architecture.control.Command;
 import software.ulpgc.money.architecture.control.ExchangeMoneyCommand;
 import software.ulpgc.money.architecture.control.ShowReadMeCommand;
 import software.ulpgc.money.architecture.control.SwapCurrenciesCommand;
+import software.ulpgc.money.architecture.io.APIService;
 import software.ulpgc.money.architecture.io.TimeSeriesChartLoader;
 import software.ulpgc.money.architecture.model.Currency;
 import software.ulpgc.money.frankfurter.FrankfurterCurrencyLoader;
 import software.ulpgc.money.frankfurter.FrankfurterExchangeRateLoader;
+import software.ulpgc.money.frankfurter.FrankfurterTimeSeriesLoader;
+import software.ulpgc.money.net.NetAPIDeserializer;
 import software.ulpgc.money.swing.SwingMainFrame;
 
 import java.util.List;
@@ -38,8 +40,9 @@ import java.util.List;
 public class App {
     public static void main() {
         SwingMainFrame main = new SwingMainFrame();
-        List<Currency> currencies = new FrankfurterCurrencyLoader().load();
-        main.putCommand("exchange money", initExchangeCommand(main, currencies));
+        APIService apiDeserializer = new NetAPIDeserializer();
+        List<Currency> currencies = new FrankfurterCurrencyLoader(apiDeserializer).load();
+        main.putCommand("exchange money", initExchangeCommand(main, currencies, apiDeserializer));
         main.putCommand("swap", initSwapCommand(main));
         main.putCommand("show info", initShowInfoCommand(main));
         main.getCommand("show info").execute();
@@ -91,14 +94,15 @@ public class App {
      * @return an instance of {@link ExchangeMoneyCommand} for handling currency exchange.
      * @since       1.0
      */
-    private static @NotNull Command initExchangeCommand(SwingMainFrame main, List<Currency> currencies) {
+    private static Command initExchangeCommand(SwingMainFrame main, List<Currency> currencies, APIService apiDeserializer) {
         return new ExchangeMoneyCommand(
                 main.moneyDialog().define(currencies),
                 main.currencyDialog().define(currencies),
-                new FrankfurterExchangeRateLoader(),
+                new FrankfurterExchangeRateLoader(apiDeserializer),
                 main.moneyDisplay(),
                 main.contentDisplay(),
-                new TimeSeriesChartLoader()
+                new TimeSeriesChartLoader(),
+                new FrankfurterTimeSeriesLoader(apiDeserializer)
         );
     }
 }
