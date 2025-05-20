@@ -38,7 +38,7 @@ import java.util.List;
  * @since       1.0.1
  */
 public class App {
-    public static void main() {
+    public static void main(String[] args) {
         SwingMainFrame main = new SwingMainFrame();
         APIService apiDeserializer = new NetAPIDeserializer();
         List<Currency> currencies = new FrankfurterCurrencyLoader(apiDeserializer).load();
